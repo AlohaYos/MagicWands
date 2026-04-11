@@ -6,6 +6,10 @@ A Mixed Reality magic wand application for visionOS, powered by Logitech MUSE sp
 ![Swift](https://img.shields.io/badge/Swift-6.2+-orange)
 ![License](https://img.shields.io/badge/license-MIT-green)
 
+## In Action
+
+https://github.com/user-attachments/assets/19f99db2-5f88-4349-96c1-a4070e3521c4
+
 ## Overview
 
 MagicWand demonstrates advanced visionOS capabilities including:
