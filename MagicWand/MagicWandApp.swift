@@ -30,6 +30,6 @@ struct MagicWandApp: App {
                     appModel.immersiveSpaceState = .closed
                 }
         }
-        .immersionStyle(selection: .constant(.mixed), in: .mixed)
+        .immersionStyle(selection: .constant(.progressive), in: .progressive)
     }
 }
