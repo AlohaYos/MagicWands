@@ -211,14 +211,9 @@ If MUSE tracking stops working after any of the following events, power cycle th
 - Prediction model errors during rapid motion in `.predicted` mode
 - Environmental factors affecting optical tracking (lighting, reflections)
 
-**Status**: This issue has been reported to Apple via Feedback Assistant (FB[pending]) and requires a fix at the visionOS or MUSE firmware level.
+**Status**: This issue has been reported to Apple via Feedback Assistant (FB22487954) and requires a fix at the visionOS or MUSE firmware level.
 
 **Workaround**: Game design can minimize impact through larger hit boxes, visual effects (glowing trails), and strong haptic feedback to compensate for occasional visual misalignment.
-
-## Documentation
-
-- **[Collision Detection Guide (JP)](docs/COLLISION_DETECTION_GUIDE_JP.md)**: Comprehensive guide to RealityKit collision detection challenges and solutions
-- **[MUSE Implementation (JP)](docs/qiita_muse_implementation.md)**: Detailed MUSE spatial tracking implementation guide
 
 ## Contributing
 
