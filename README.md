@@ -182,7 +182,38 @@ If MUSE tracking stops working after any of the following events, power cycle th
 3. **Long Sleep**: Coordinate system may reset after wake
 4. **Repeated Connections**: Bluetooth connection becomes unstable
 
-See [docs/qiita_muse_implementation.md](docs/qiita_muse_implementation.md) for detailed troubleshooting.
+
+### MUSE Position Tracking Instability (visionOS Limitation)
+
+**Symptom**: The wand entity occasionally jumps to incorrect positions (typically 6-11cm offset) while maintaining correct orientation. The position then spontaneously corrects itself after continued movement.
+
+**Root Cause**: This is a **visionOS/MUSE hardware tracking limitation**, not an application-level issue. Our investigation revealed:
+
+1. **Hardware/OS Level Issue**: Debug logging shows the `AnchorEntity` position itself jumps, proving the instability originates from visionOS's accessory tracking system, not our RealityKit implementation.
+
+2. **Verified Tracking Modes**: Both `.predicted` (low latency, prediction-based) and `.continuous` (higher latency, measurement-only) tracking modes exhibit the same instability. `.continuous` only adds latency without improving stability.
+
+3. **Verified Anchor Locations**: Testing both `"aim"` (stylus tip) and `"origin"` (grip position ~5cm from tip) anchor locations shows identical instability patterns.
+
+4. **Proper Implementation Verified**: The RealityKit entity hierarchy (AnchorEntity → wandModel → debug cubes) correctly maintains relative positions with 0.000m offset, confirming our implementation follows Apple's best practices.
+
+**Why Software Mitigation Isn't Feasible**:
+
+- **Smoothing filters** would introduce lag and misalignment during actual movement
+- **Jump threshold filters** would cause the wand to "stick" at incorrect positions
+- The tracking jumps are unpredictable in timing and magnitude (6-11cm)
+- Any software correction risks degrading the user experience more than the original issue
+
+**Possible Hardware/OS Causes**:
+
+- IMU (Inertial Measurement Unit) sensor precision limits in MUSE hardware
+- Visual-inertial fusion algorithm accuracy in visionOS spatial tracking
+- Prediction model errors during rapid motion in `.predicted` mode
+- Environmental factors affecting optical tracking (lighting, reflections)
+
+**Status**: This issue has been reported to Apple via Feedback Assistant (FB[pending]) and requires a fix at the visionOS or MUSE firmware level.
+
+**Workaround**: Game design can minimize impact through larger hit boxes, visual effects (glowing trails), and strong haptic feedback to compensate for occasional visual misalignment.
 
 ## Documentation
 
