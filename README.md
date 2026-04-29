@@ -1,4 +1,4 @@
-# MagicWand
+# MagicWand for Apple Vision Pro
 
 A Mixed Reality magic wand application for visionOS, powered by Logitech MUSE spatial stylus. Transform your MUSE into a wand with haptic feedback, motion detection, and physics interactions.
 
