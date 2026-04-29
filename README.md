@@ -8,7 +8,7 @@ A Mixed Reality magic wand application for visionOS, powered by Logitech MUSE sp
 
 ## In Action
 
-https://github.com/user-attachments/assets/19f99db2-5f88-4349-96c1-a4070e3521c4
+<img width="800" height="450" alt="Image" src="https://github.com/user-attachments/assets/e498d881-b0bf-4fb8-bafc-70b71cbc4ab2" />
 
 ## Overview
 
